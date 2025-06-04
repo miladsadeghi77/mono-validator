@@ -7,10 +7,11 @@ import java.util.Collection;
 import java.util.Map;
 
 public class NotEmptyValidator implements BaseValidator<NotEmpty, Object> {
+  private String message;
 
   @Override
   public void initialize(NotEmpty constraintAnnotation) {
-
+    this.message = constraintAnnotation.message();
   }
 
   @Override
@@ -35,5 +36,10 @@ public class NotEmptyValidator implements BaseValidator<NotEmpty, Object> {
 
     if (value.getClass().isArray()) return Array.getLength(value) == 0;
     return false;
+  }
+
+  @Override
+  public String getMessage() {
+    return message;
   }
 }

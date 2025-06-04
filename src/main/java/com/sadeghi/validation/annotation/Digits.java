@@ -6,8 +6,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD , ElementType.METHOD , ElementType.PARAMETER})
-public @interface NotEmpty {
+@Target(ElementType.FIELD)
+public @interface Digits {
 
-  String message() default "cannot be empty";
+  int integer() default 0;
+
+  int fractional() default 0;
+
+  String message() default "numeric value out of bounds (<{integer} digits>.<{fraction} digits>)";
+
 }

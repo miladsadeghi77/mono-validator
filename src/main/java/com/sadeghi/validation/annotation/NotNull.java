@@ -10,4 +10,6 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD , ElementType.METHOD , ElementType.PARAMETER})
 public @interface NotNull {
 
+  String message() default "must not be null";
+
 }
