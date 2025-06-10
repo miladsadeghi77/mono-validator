@@ -49,4 +49,9 @@ public class DigitsValidator implements BaseValidator<Digits,Object> {
   public String getMessage() {
     return message;
   }
+
+  @Override
+  public Class<Digits> getAnnotationClass() {
+    return Digits.class;
+  }
 }

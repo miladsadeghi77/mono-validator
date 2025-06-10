@@ -42,4 +42,10 @@ public class NotEmptyValidator implements BaseValidator<NotEmpty, Object> {
   public String getMessage() {
     return message;
   }
+
+
+  @Override
+  public Class<NotEmpty> getAnnotationClass() {
+    return NotEmpty.class;
+  }
 }

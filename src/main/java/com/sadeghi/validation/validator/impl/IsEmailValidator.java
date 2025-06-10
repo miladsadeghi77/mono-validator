@@ -29,4 +29,9 @@ public class IsEmailValidator implements BaseValidator<IsEmail, String> {
   public String getMessage() {
     return message;
   }
+
+  @Override
+  public Class<IsEmail> getAnnotationClass() {
+    return IsEmail.class;
+  }
 }

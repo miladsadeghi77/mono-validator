@@ -30,4 +30,9 @@ public class LengthValidator implements BaseValidator<Length, Object> {
   public String getMessage() {
     return message;
   }
+
+  @Override
+  public Class<Length> getAnnotationClass() {
+    return Length.class;
+  }
 }

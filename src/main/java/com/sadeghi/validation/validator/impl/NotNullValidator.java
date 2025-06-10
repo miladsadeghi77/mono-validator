@@ -20,4 +20,9 @@ public class NotNullValidator implements BaseValidator<NotNull, Object> {
   public String getMessage() {
     return message;
   }
+
+  @Override
+  public Class<NotNull> getAnnotationClass() {
+    return NotNull.class;
+  }
 }
