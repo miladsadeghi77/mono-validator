@@ -128,7 +128,7 @@ To run the tests:
 ## 🧠 How It Works
 
 - Uses Java's `javax.annotation.processing` to generate validation logic at compile-time.
-- Validators implement the `ConstraintValidator` interface.
+- Validators implement the `BaseValidator` interface.
 - Annotated elements are detected and validated based on registered rules.
 
 ## 📁 Project Structure
