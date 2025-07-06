@@ -51,31 +51,57 @@ dependencies {
 ### 1. Create a Custom Annotation
 
 ```java
-@Target(ElementType.FIELD)
+
 @Retention(RetentionPolicy.RUNTIME)
-@MonoValidator
-public @interface NotEmpty {
-    String message() default "Field must not be empty";
+@Target(ElementType.FIELD)
+public @interface Max {
+
+  int max() default Integer.MAX_VALUE;
+  String message() default "Field must be lower then '{max}' characters.";
+
 }
+
 ```
 
 ### 2. Implement the Validator
 
 ```java
-public class NotEmptyValidator implements ConstraintValidator<NotEmpty, String> {
-    @Override
-    public boolean isValid(String value, NotEmpty annotation) {
-        return value != null && !value.trim().isEmpty();
-    }
+
+@MonoValidator
+public class MaxValidator implements BaseValidator<Max,Integer> {
+  private Integer max;
+  private String message;
+  @Override
+  public void initialize(Max constraintAnnotation) {
+    max = constraintAnnotation.max();
+    message = constraintAnnotation.message();
+  }
+
+  @Override
+  public boolean isValid(Integer value) {
+    return value > max;
+
+  }
+
+  @Override
+  public String getMessage() {
+    return message;
+  }
+
+  @Override
+  public Class<Max> getAnnotationClass() {
+    return Max.class;
+  }
+
 }
 ```
 
 ### 3. Annotate Your DTO
 
 ```java
-public class UserDto {
-    @NotEmpty
-    private String name;
+public class CarDto {
+ @Max(max = 200)
+  private int speed;
 
     // getters and setters
 }
@@ -84,12 +110,11 @@ public class UserDto {
 ### 4. Run the Validator (Example)
 
 ```java
-ValidationEngine engine = new ValidationEngine();
-ValidationResult result = engine.validate(new UserDto());
+Validator validator = new Validator();
+Set<LimitationViolation> result = validator.validate(new CarDto());
 
-if (!result.isValid()) {
-    result.getErrors().forEach(System.out::println);
-}
+result.forEach(System.out::println);
+
 ```
 
 ## 🧪 Tests
@@ -103,7 +128,7 @@ To run the tests:
 ## 🧠 How It Works
 
 - Uses Java's `javax.annotation.processing` to generate validation logic at compile-time.
-- Validators implement the `ConstraintValidator` interface.
+- Validators implement the `BaseValidator` interface.
 - Annotated elements are detected and validated based on registered rules.
 
 ## 📁 Project Structure
