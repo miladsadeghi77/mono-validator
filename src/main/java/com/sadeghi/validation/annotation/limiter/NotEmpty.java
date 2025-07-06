@@ -1,5 +1,4 @@
-package com.sadeghi.validation.annotation;
-
+package com.sadeghi.validation.annotation.limiter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,8 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD , ElementType.METHOD , ElementType.PARAMETER})
-public @interface NotNull {
+public @interface NotEmpty {
 
-  String message() default "must not be null";
-
+  String message() default "cannot be empty";
 }

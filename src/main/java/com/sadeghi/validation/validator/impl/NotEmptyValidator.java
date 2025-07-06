@@ -1,6 +1,6 @@
 package com.sadeghi.validation.validator.impl;
 
-import com.sadeghi.validation.annotation.NotEmpty;
+import com.sadeghi.validation.annotation.limiter.NotEmpty;
 import com.sadeghi.validation.validator.BaseValidator;
 import java.lang.reflect.Array;
 import java.util.Collection;

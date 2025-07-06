@@ -1,10 +1,10 @@
 package com.sadeghi.validation.validator;
 
-import com.sadeghi.validation.annotation.Digits;
-import com.sadeghi.validation.annotation.IsEmail;
-import com.sadeghi.validation.annotation.Length;
-import com.sadeghi.validation.annotation.NotEmpty;
-import com.sadeghi.validation.annotation.NotNull;
+import com.sadeghi.validation.annotation.limiter.Digits;
+import com.sadeghi.validation.annotation.limiter.IsEmail;
+import com.sadeghi.validation.annotation.limiter.Length;
+import com.sadeghi.validation.annotation.limiter.NotEmpty;
+import com.sadeghi.validation.annotation.limiter.NotNull;
 import com.sadeghi.validation.validator.impl.DigitsValidator;
 import com.sadeghi.validation.validator.impl.IsEmailValidator;
 import com.sadeghi.validation.validator.impl.LengthValidator;
@@ -52,7 +52,7 @@ public class Validator {
 
   }
 
-  public Set<LimitationViolation> validate(Object object) throws IllegalAccessException {
+  public static Set<LimitationViolation> validate(Object object) throws IllegalAccessException {
 
     Set<LimitationViolation> violations = new LinkedHashSet<>(); // Using LinkedHashSet to preserve some order (not guaranteed by spec)
 
@@ -100,13 +100,6 @@ public class Validator {
       //}
     }
     return violations;
-  }
-
-
-  private boolean isValid(Field declaredField, Annotation annotation,
-      Object value) {
-
-    return true;
   }
 
 }

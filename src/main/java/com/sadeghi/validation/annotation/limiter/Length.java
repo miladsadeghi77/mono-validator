@@ -1,4 +1,4 @@
-package com.sadeghi.validation.annotation;
+package com.sadeghi.validation.annotation.limiter;
 
 
 import java.lang.annotation.ElementType;
@@ -8,7 +8,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface IsEmail {
+public @interface Length {
 
-  String message() default "Please enter a valid email address (e.g., user@gmail.com or user@yahoo.com)";
+  int min() default 0;
+  int max() default Integer.MAX_VALUE;
+
+  String message() default "Field must be between '{min}' and '{max}' characters.";
 }

@@ -1,6 +1,6 @@
 package com.sadeghi.validation.validator.impl;
 
-import com.sadeghi.validation.annotation.Digits;
+import com.sadeghi.validation.annotation.limiter.Digits;
 import com.sadeghi.validation.validator.BaseValidator;
 import java.math.BigDecimal;
 

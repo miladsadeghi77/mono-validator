@@ -1,6 +1,6 @@
 package com.sadeghi.validation.validator.impl;
 
-import com.sadeghi.validation.annotation.IsEmail;
+import com.sadeghi.validation.annotation.limiter.IsEmail;
 import com.sadeghi.validation.validator.BaseValidator;
 import java.util.regex.Pattern;
 

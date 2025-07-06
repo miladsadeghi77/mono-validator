@@ -1,6 +1,6 @@
 package com.sadeghi.validation.validator.impl;
 
-import com.sadeghi.validation.annotation.Length;
+import com.sadeghi.validation.annotation.limiter.Length;
 import com.sadeghi.validation.validator.BaseValidator;
 
 public class LengthValidator implements BaseValidator<Length, Object> {
