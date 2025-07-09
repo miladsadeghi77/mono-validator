@@ -21,7 +21,7 @@ import java.util.Set;
 
 public class Validator {
 
-  private final Map<Class<? extends Annotation>, Class<? extends BaseValidator>>
+  private static final Map<Class<? extends Annotation>, Class<? extends BaseValidator>>
       annotationToValidatorMap = new HashMap<>();
 
   //todo create ValidatorException
