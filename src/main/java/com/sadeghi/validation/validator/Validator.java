@@ -1,15 +1,15 @@
 package com.sadeghi.validation.validator;
 
 import com.sadeghi.validation.annotation.limiter.Digits;
-import com.sadeghi.validation.annotation.limiter.IsEmail;
 import com.sadeghi.validation.annotation.limiter.Length;
 import com.sadeghi.validation.annotation.limiter.NotEmpty;
 import com.sadeghi.validation.annotation.limiter.NotNull;
+import com.sadeghi.validation.annotation.limiter.Pattern;
 import com.sadeghi.validation.validator.impl.DigitsValidator;
-import com.sadeghi.validation.validator.impl.IsEmailValidator;
 import com.sadeghi.validation.validator.impl.LengthValidator;
 import com.sadeghi.validation.validator.impl.NotEmptyValidator;
 import com.sadeghi.validation.validator.impl.NotNullValidator;
+import com.sadeghi.validation.validator.impl.PatternValidator;
 import com.sadeghi.validation.violation.LimitationViolation;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -32,7 +32,7 @@ public class Validator {
     annotationToValidatorMap.put(Digits.class, DigitsValidator.class);
     annotationToValidatorMap.put(Length.class, LengthValidator.class);
     annotationToValidatorMap.put(NotEmpty.class, NotEmptyValidator.class);
-    annotationToValidatorMap.put(IsEmail.class, IsEmailValidator.class);
+    annotationToValidatorMap.put(Pattern.class, PatternValidator.class);
 
     ServiceLoader<BaseValidator> customValidators = ServiceLoader.load(BaseValidator.class);
     for (BaseValidator validatorInstance : customValidators) {
